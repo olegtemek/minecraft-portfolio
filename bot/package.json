@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "@prisma/client": "^4.14.1",
     "abort-controller": "^3.0.0",
+    "axios": "^1.4.0",
     "buffer-alloc": "^1.2.0",
     "buffer-alloc-unsafe": "^1.1.0",
     "buffer-fill": "^1.0.0",
@@ -16,7 +16,6 @@
     "ms": "^2.1.2",
     "node-fetch": "^2.6.11",
     "p-timeout": "^4.1.0",
-    "prisma": "^4.14.1",
     "safe-compare": "^1.1.4",
     "sandwich-stream": "^2.0.2",
     "telegraf": "^4.12.2",
@@ -29,7 +28,7 @@
   "scripts": {
     "dev": "nodemon --watch src src/index.ts",
     "build": "tsc",
-    "start":"node ./build/index.js"
+    "start": "node ./build/index.js"
   },
   "keywords": [],
   "author": "",

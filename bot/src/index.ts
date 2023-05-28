@@ -1,16 +1,17 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 import { Telegraf } from "telegraf";
-import { Project, Stack } from "@prisma/client";
 import { IContext } from "./interfaces/IContext";
 import { ICallback } from "./interfaces/ICallback";
-import { PrismaRepository } from "./prisma/repository";
 import { Buttons } from "./button/btns";
 import { startBot } from "./utils/utils";
+import { Api } from "./api/api";
+import { IStack } from "./interfaces/IStack";
+import { IProject } from "./interfaces/IProject";
 
 const bot = new Telegraf(`${process.env.BOT_API_KEY}`);
+const useApi = new Api();
 
-const prismaRepository = new PrismaRepository();
 const buttons = new Buttons();
 
 bot.start(async (ctx: IContext) => {
@@ -30,7 +31,7 @@ bot.on("callback_query", async (ctx: IContext) => {
   if (query.length > 1 && query[0] == "projects") {
     ctx.deleteMessage();
 
-    const project = await prismaRepository.findProjectBySlug(query[1]);
+    const project = await useApi.findProjectBySlug(query[1]);
 
     if (!project)
       return ctx.reply(
@@ -46,7 +47,7 @@ bot.on("callback_query", async (ctx: IContext) => {
 
   if (query[0] == "projects") {
     ctx.deleteMessage();
-    const projects: Project[] = await prismaRepository.findAllProjects();
+    const projects: IProject[] = await useApi.findAllProjects();
     return ctx.reply("Choose a project: ", buttons.projectsButtons(projects));
   }
   if (query[0] == "contacts") {
@@ -59,7 +60,7 @@ bot.on("callback_query", async (ctx: IContext) => {
   }
 
   if (query[0] == "stacks") {
-    const stacks: Stack[] = await prismaRepository.findAllStacks();
+    const stacks: IStack[] = await useApi.findAllStacks();
     return ctx.reply(
       `${stacks
         .map((stack) => {

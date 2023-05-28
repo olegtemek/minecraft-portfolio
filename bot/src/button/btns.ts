@@ -1,8 +1,8 @@
-import { Project } from "@prisma/client";
 import { Markup } from "telegraf";
+import { IProject } from "../interfaces/IProject";
 
 export class Buttons {
-  projectsButtons(projects: Project[]) {
+  projectsButtons(projects: IProject[]) {
     const btns = projects.map((project) => {
       return {
         text: project.title,
