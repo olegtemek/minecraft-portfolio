@@ -1,0 +1,42 @@
+{
+  "name": "bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@prisma/client": "^4.14.1",
+    "abort-controller": "^3.0.0",
+    "buffer-alloc": "^1.2.0",
+    "buffer-alloc-unsafe": "^1.1.0",
+    "buffer-fill": "^1.0.0",
+    "debug": "^4.3.4",
+    "dotenv": "^16.0.3",
+    "event-target-shim": "^5.0.1",
+    "mri": "^1.2.0",
+    "ms": "^2.1.2",
+    "node-fetch": "^2.6.11",
+    "p-timeout": "^4.1.0",
+    "prisma": "^4.14.1",
+    "safe-compare": "^1.1.4",
+    "sandwich-stream": "^2.0.2",
+    "telegraf": "^4.12.2",
+    "tr46": "^0.0.3",
+    "typegram": "^4.3.0",
+    "typescript": "^5.0.4",
+    "webidl-conversions": "^3.0.1",
+    "whatwg-url": "^5.0.0"
+  },
+  "scripts": {
+    "dev": "nodemon --watch src src/index.ts",
+    "build": "tsc",
+    "start":"node ./build/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.2.5",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1"
+  }
+}

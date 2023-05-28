@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.alert-enter-active,
+.alert-leave-active {
+  transition: all 0.4s;
+}
+.alert-enter-from,
+.alert-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
+
+
+.router-link-active{
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+  color: rgb(31 41 55 / var(--tw-text-opacity));
+}
