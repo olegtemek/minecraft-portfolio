@@ -54,3 +54,38 @@ body {
     background-color: $blue;
   }
 }
+
+.sound {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  width: 40px;
+  height: 40px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  background-color: $gray;
+  color: $white;
+  text-shadow: 2px 2px 0 rgba($black, 0.8);
+  font-size: 16px;
+  border: 2px solid $black;
+  box-shadow: inset 3px 3px 0 rgba($white, 0.5),
+    inset -3px -3px 0 rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+  }
+
+  @media (max-width: 560px) {
+    top: 20px;
+    right: 20px;
+  }
+
+  &:hover {
+    background-color: $blue;
+  }
+}

@@ -12,7 +12,14 @@ import { ProjectService } from './project.service';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { JwtAuthGuard } from 'src/user/auth.guard';
-import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiHeader,
+  ApiOperation,
+  ApiParam,
+  ApiTags,
+} from '@nestjs/swagger';
 
 @ApiTags('Project')
 @Controller('project')
@@ -31,24 +38,26 @@ export class ProjectController {
   }
 
   @Get()
-  @ApiBody({
-    description: 'Get all projects',
-  })
+  @ApiOperation({ summary: 'Get all projects' })
   findAll() {
     return this.projectService.findAll();
   }
 
   @Get(':id')
-  @ApiBody({
-    description: 'Get project by id',
+  @ApiOperation({ summary: 'Get project by id' })
+  @ApiParam({
+    name: 'id',
+    type: 'number',
   })
   findOne(@Param('id') id: string) {
     return this.projectService.findOne(+id);
   }
 
   @Get('project/:slug')
-  @ApiBody({
-    description: 'Get project by slug',
+  @ApiOperation({ summary: 'Get project by slug' })
+  @ApiParam({
+    name: 'slug',
+    type: 'string',
   })
   findOneBySlug(@Param('slug') slug: string) {
     return this.projectService.findOneBySlug(slug);

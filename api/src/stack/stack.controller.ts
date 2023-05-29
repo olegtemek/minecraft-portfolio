@@ -12,7 +12,14 @@ import { StackService } from './stack.service';
 import { CreateStackDto } from './dto/create-stack.dto';
 import { UpdateStackDto } from './dto/update-stack.dto';
 import { JwtAuthGuard } from 'src/user/auth.guard';
-import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiConsumes,
+  ApiOperation,
+  ApiParam,
+  ApiTags,
+} from '@nestjs/swagger';
 import { FormDataRequest } from 'nestjs-form-data';
 
 @ApiTags('Stack')
@@ -34,16 +41,16 @@ export class StackController {
   }
 
   @Get()
-  @ApiBody({
-    description: 'for get all stack',
-  })
+  @ApiOperation({ summary: 'Get all stack' })
   findAll() {
     return this.stackService.findAll();
   }
 
   @Get(':id')
-  @ApiBody({
-    description: 'For get stack by id',
+  @ApiOperation({ summary: 'Get stack by id' })
+  @ApiParam({
+    type: 'number',
+    name: 'id',
   })
   findOne(@Param('id') id: string) {
     return this.stackService.findOne(+id);
