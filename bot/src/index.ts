@@ -62,11 +62,9 @@ bot.on("callback_query", async (ctx: IContext) => {
   if (query[0] == "stacks") {
     const stacks: IStack[] = await useApi.findAllStacks();
     return ctx.reply(
-      `${stacks
-        .map((stack) => {
-          return `${stack.title}\n`;
-        })
-        .join("")}`,
+      `${stacks.map((stack) => {
+        return ` ${stack.title}`;
+      })}`,
       buttons.mainMenuButton()
     );
   }
